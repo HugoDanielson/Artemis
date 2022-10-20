@@ -2,18 +2,27 @@ import os.path
 import pickle
 import warnings
 import pandas as pd
-import easygui
-from database import savedata, loadData
+from excelhandler import *
+from database import *
+from sharedOperationsVillar import saveTolerances
+
+#If you want to save a key to a path
+#saveExcelDataLocation(key="VillarBearingData")
 
 
-key = "VillarBearingData"
-variable = easygui.fileopenbox("Please chose Respective Bearing Data")
 
-#if you want to save data
-savedata(key, variable)
+#loadData(path="Data/saveData.p",expose=True)
+#If you want to load data to variable db #
+db = loadExcelDataLocation(expose=True)
 
-#If you want to load data#
-loadData('Data/saveData.p','true')
+
+#Loads an excel from file path location in db[key]
+workbook = readExcel(db["VillarBearingData"])
+
+
+saveTolerances(workbook, longname='Data/BearingData/BearingData1.p', shortname='Data/BearingData/BearingData2.p')
+
+
 
 
 

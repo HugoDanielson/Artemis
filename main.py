@@ -1,23 +1,18 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-
-
-
-
-
-
+import os.path
+import pickle
+import warnings
+import pandas as pd
+from Packages.excelhandler import *
+from Packages.database import *
+from Packages.sharedOperationsVillar import saveTolerances
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+    db = loadExcelDataLocation(expose=True)
+
+    # Loads an excel from file path location in db[key]
+    workbook = readExcel(db["VillarBearingData"])
+
+    saveTolerances(workbook, longname='Data/BearingData/BearingData1.p', shortname='Data/BearingData/BearingData2.p')
