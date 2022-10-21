@@ -17,18 +17,28 @@ def loadData(path = None,expose = False):
 
 
 
-def save(data, path):
-    try:
+def save(data, path,rewrite=True):
+
+    if rewrite == True:
+
+        try:
+            dbfile = open(path, 'wb')
+            pickle.dump(data, dbfile)
+            dbfile.close()
+        except:
+            print("Warning dbfile error")
+            dbfile.close()
+    elif rewrite == False:
+        dbfile = open(path, 'rb')
+        db = pickle.load(data,dbfile)
+        dbfile.close()
+
         dbfile = open(path, 'wb')
-        pickle.dump(data, dbfile)
-        dbfile.close()
-    except:
-        print("Warning dbfile error")
+        pickle.dump(db, dbfile)
         dbfile.close()
 
 
-
-def saveData (key=None,variable=None, path = "Data/saveData.p" , db ={} ):
+def saveData (key=None,variable=None, path = "Packages/Data/saveData.p"):
 
     #Function to save a new variable in SaveData.
     #saveData (key,variable,database = {})
@@ -37,6 +47,12 @@ def saveData (key=None,variable=None, path = "Data/saveData.p" , db ={} ):
     #Database is the database to be used.
     # For example in the event you want to save the path of where the Excel file to be retrieved is; , Key = Path, Variable is the directory "Data/saveData,p", database = db
     # stringify
+    try:
+        dbfile = open(path, 'rb')
+        db = pickle.load(dbfile)
+        dbfile.close()
+    except:
+        db = {}
 
     if variable == None:
         print("No Variable defined")

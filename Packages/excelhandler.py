@@ -1,6 +1,6 @@
 import pandas as pd
 import easygui
-from database import *
+from Packages.database import *
 
 def readExcel(fileLocation):
 
@@ -18,15 +18,15 @@ def saveExcelDataLocation(key = None,variable = None):
     if key == None:
         key = input("Please define Database identifier key   ")
 
-    saveData(key, variable)
+    saveData(key=key, variable = variable)
     print("Save Data Complete")
 
 def loadExcelDataLocation(key = None, expose = False):
 
     if key == None:
-        db = loadData('Data/saveData.p', expose)
+        db = loadData('Packages/Data/saveData.p', expose)
     else:
-        db = loadData('Data/saveData.p', expose)
+        db = loadData('Packages/Data/saveData.p', expose)
         db = db[key]
     return db
 

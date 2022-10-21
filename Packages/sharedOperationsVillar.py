@@ -1,4 +1,4 @@
-from database import *
+from Packages.database import *
 
 
 def rough_face_thick(Diameter, iDiam, Thickness, Channel):
@@ -351,25 +351,20 @@ def saveTolerances(workbook,longname =None, shortname=None):
 
         tipo = workbook['Tipo'].loc[indx]
 
-        #d = {'d': workbook['d'].loc[indx]}
+
         dd = workbook['d'].loc[indx]
-        #D = {'D': workbook['D'].loc[indx]}
+
         DD = workbook['D'].loc[indx]
-        #B = {'B': workbook['B'].loc[indx]}
+
         BB = workbook['B'].loc[indx]
-        #Cnl = {'Channel': workbook['Channel'].loc[indx]}
+
         CC = workbook['Channel'].loc[indx]
 
-        #FVbe = {'Vbe': workbook['Vbe'].loc[indx]}
-        #FSpe = {'Spe': workbook['Spe'].loc[indx]}
+
         FFspe = workbook['Spe'].loc[indx]
         FFvbe = workbook['Vbe'].loc[indx]
 
-        # RoughFace1 = rough_face_thick(DD,dd,BB,CC)
-        # RoughFace2 = rough_face_plan(DD,dd,BB,CC)
-        # RoughOuter1 = rough_outer_di(DD, dd, BB, CC)
-        # RoughOuter2 = rough_outer_con(DD, dd, BB, CC)
-        # RoughOuter3 = rough_outer_poly(DD, dd, BB, CC)
+
 
         if DD < 47:
             pass
@@ -398,7 +393,7 @@ def saveTolerances(workbook,longname =None, shortname=None):
             bearing_data_long[
                 str(tipo)] = RoughFace1, RoughFace2, RoughOuter1, RoughOuter2, RoughOuter3, FaceFinish1, FaceFinish2, FaceFinish3
 
-        # bearing_data[str(tipo)] = RoughFace1, RoughFace2,Centerless1,Centerless2
+
         try:
             print(bearing_data[str(tipo)])
         except:
@@ -408,6 +403,5 @@ def saveTolerances(workbook,longname =None, shortname=None):
 
     save(path=shortname, data=bearing_data)
     save(path=longname, data=bearing_data_long)
-    #pickle.dump(bearing_data, open("Data/BearingData/BearingData21.p", "wb"))
-    #pickle.dump(bearing_data_long, open("Data/BearingData/BearingData22.p", "wb"))
+
 
