@@ -53,8 +53,6 @@ def rough_face_thick(Diameter, iDiam, Thickness, Channel):
         return [d, D, B, rough_thickname, B_nom, B_min, B_max, B_delta, M_desig, M_num, Cnl]
     except:
         pass
-
-
 def rough_face_plan(Diameter, iDiam, Thickness, Channel):
     d = {'d': iDiam}
     D = {'D': Diameter}
@@ -106,7 +104,6 @@ def rough_face_plan(Diameter, iDiam, Thickness, Channel):
         return [d, D, B, rough_plname, Pl_nom, Pl_min, Pl_max, Pl_delta, M_desig, M_num,Cnl]
     except:
         pass
-
 def rough_outer_di(Diameter, iDiam, Thickness, Channel):
     d = {'d': iDiam}
     D = {'D': Diameter}
@@ -207,7 +204,6 @@ def rough_outer_con(Diameter, iDiam, Thickness, Channel):
         return [d, D, B, rough_out_con_name, Con_nom, Con_min, Con_max,Con_delta, M_desig, M_num, Cnl]
     except:
         pass
-
 def rough_outer_poly(Diameter, iDiam, Thickness, Channel):
     d = {'d': iDiam}
     D = {'D': Diameter}
@@ -256,12 +252,8 @@ def rough_outer_poly(Diameter, iDiam, Thickness, Channel):
         return [d, D, B, rough_out_pol_name, Pol_nom, Pol_min, Pol_max, Pol_delta, M_desig, M_num, Cnl]
     except:
         pass
-
-
-
 def seal_turn_tol ():
     pass
-
 def finish_face_thick(Diameter, iDiam, Thickness, Channel):
     d = {'d': iDiam}
     D = {'D': Diameter}
@@ -287,7 +279,6 @@ def finish_face_thick(Diameter, iDiam, Thickness, Channel):
         return [d, D, B, rough_thickname, B_nom, B_min, B_max, B_delta, M_desig, M_num, Cnl]
     except:
         pass
-
 def finish_face_plan(Diameter, iDiam, Thickness, Channel,Spe):
     d = {'d': iDiam}
     D = {'D': Diameter}
@@ -309,7 +300,6 @@ def finish_face_plan(Diameter, iDiam, Thickness, Channel,Spe):
         return [d, D, B, rough_plname, Pl_nom, Pl_min, Pl_max, Pl_delta, M_desig, M_num,Cnl]
     except:
         pass
-
 def finish_face_paral(Diameter, iDiam, Thickness, Channel,Vbe):
     d = {'d': iDiam}
     D = {'D': Diameter}
@@ -332,9 +322,6 @@ def finish_face_paral(Diameter, iDiam, Thickness, Channel,Vbe):
         return [d, D, B, rough_plname, Pl_nom, Pl_min, Pl_max, Pl_delta, M_desig, M_num,Cnl]
     except:
         pass
-
-
-
 def saveTolerances(workbook,longname =None, shortname=None):
     bearing_data = {}
     bearing_data_long = {}

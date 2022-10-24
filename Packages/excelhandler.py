@@ -10,7 +10,6 @@ def readExcel(fileLocation):
         print("Location Eerror")
     return workbook
 
-
 def saveExcelDataLocation(key = None,variable = None):
 
     if variable == None:
@@ -21,12 +20,12 @@ def saveExcelDataLocation(key = None,variable = None):
     saveData(key=key, variable = variable)
     print("Save Data Complete")
 
-def loadExcelDataLocation(key = None, expose = False):
+def loadExcelDataLocation(key = None, expose = False, path ='Packages/Data/saveData.p'):
 
     if key == None:
-        db = loadData('Packages/Data/saveData.p', expose)
+        db = loadData(path, expose)
     else:
-        db = loadData('Packages/Data/saveData.p', expose)
+        db = loadData(path, expose)
         db = db[key]
     return db
 

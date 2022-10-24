@@ -15,8 +15,6 @@ def loadData(path = None,expose = False):
     dbfile.close()
     return db
 
-
-
 def save(data, path,rewrite=True):
 
     if rewrite == True:
@@ -36,7 +34,6 @@ def save(data, path,rewrite=True):
         dbfile = open(path, 'wb')
         pickle.dump(db, dbfile)
         dbfile.close()
-
 
 def saveData (key=None,variable=None, path = "Packages/Data/saveData.p"):
 

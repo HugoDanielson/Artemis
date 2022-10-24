@@ -1,4 +1,5 @@
 import random
+
 import openpyxl
 import pickle
 import pandas as pd
@@ -6,31 +7,20 @@ import subprocess
 import os
 import keyboard
 import time
-from Packages.database import *
 
-def excelLoader(path):
-    #Path = Excel Template Path"ExcelTemplate/Aerospace.xlsx"
+def run_script():
 
 
-    wb = openpyxl.load_workbook(path)
-    #wb = openpyxl.load_workbook(("ExcelFiles/measureAeroImportTemplate.xlsx"))
+    wb = openpyxl.load_workbook(("ExcelFiles/measureAeroImportTemplate.xlsx"))
 
-    #ws = wb.active
-    return wb
-
-
-def excelFiller(wb,offset = 7, path="Packages/Data/BearingData/", name="Data"):
-    #wb = workbook from the template
-    #path = Directory to where the Processed Template data is stored. Example Packages/Data/BearingData/
-    #name =
-    #data to be input is equivalent to data from for example "Packages/Data/BearingData", already parsed through the loader.
     ws = wb.active
-    fullname = "Output/" + name +".xlsx"
-    listSize = os.listdir(path)
 
-    for i in range(0,len(listSize)):
-        data = loadData(path= (path + listSize[i]))
-        df = pd.DataFrame(data)
+    offset = 7
+
+    for i in range(1,3):
+        bdata = "BearingData{}.p".format(i)
+        bearing_data = pickle.load(open(bdata, "rb"))
+        df = pd.DataFrame(bearing_data)
 
         for x in range(0,len(df.head().keys())):
 
@@ -111,6 +101,7 @@ def excelFiller(wb,offset = 7, path="Packages/Data/BearingData/", name="Data"):
             offset = offset + rf.size
 
             print(offset)
-        wb.save(fullname)
+        name = "NewzFile.xlsx"
+        wb.save(name)
             #write_header(tipo, ws)
             #write_measurement(ws, tipo, rf, x)
