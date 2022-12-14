@@ -7,7 +7,7 @@ def readExcel(fileLocation):
     try:
         workbook = pd.read_excel(fileLocation)
     except:
-        print("Location Eerror")
+        print("Location Error")
     return workbook
 
 def saveExcelDataLocation(key = None,variable = None):
